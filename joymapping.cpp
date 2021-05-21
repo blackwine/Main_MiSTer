@@ -244,13 +244,13 @@ static const char* get_std_name(uint16_t code, uint32_t *mmap)
 	return code ? "[ ]" : NULL;
 }
 
-void map_joystick_show(uint32_t *map, uint32_t *mmap, int num)
+void map_joystick_show(uint32_t *map, uint32_t *mmap, char *players_str)
 {
 	static char mapinfo[1024];
 	read_buttons();
 
-	sprintf(mapinfo, "Map (P%d):", num);
-	if (!num) sprintf(mapinfo, " Map:");
+	sprintf(mapinfo, "Map (P%s):", players_str);
+	if (!players_str) sprintf(mapinfo, " Map:");
 	char *list = mapinfo + strlen(mapinfo);
 
 	// loop through core requested buttons and construct result map
